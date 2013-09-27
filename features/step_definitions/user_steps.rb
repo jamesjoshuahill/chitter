@@ -14,14 +14,6 @@ When(/^I fill in the sign up form with correct details$/) do
   end
 end
 
-When(/^I fill in the log in form with correct details$/) do
-  with_scope('#log-in') do
-    fill_in('email',  :with => correct_email)
-    fill_in('password', :with => correct_password)
-    click_button 'Log in'
-  end
-end
-
 Then(/^I should be logged in$/) do
   current_path = URI.parse(current_url).path
   expect(current_path).to eq path_to('the home page')
@@ -40,7 +32,7 @@ When(/^I fill in the sign up form with passwords that don't match$/) do
     fill_in('name', :with => correct_name)
     fill_in('email',  :with => correct_email)
     fill_in('password', :with => correct_password)
-    fill_in('password_confirmation', :with => 'foow')
+    fill_in('password_confirmation', :with => 'wrong password')
     fill_in('username', :with => correct_username)
     click_button 'Sign up'
   end
@@ -66,5 +58,28 @@ Then(/^I should see an invalid sign up message$/) do
     expect(page).to have_content('Please try again:')
     expect(page).to have_content('There is already an account with this email address')
     expect(page).to have_content('There is already an account with this username')
+  end
+end
+
+When(/^I fill in the log in form with correct details$/) do
+  with_scope('#log-in') do
+    fill_in('email',  :with => correct_email)
+    fill_in('password', :with => correct_password)
+    click_button 'Log in'
+  end
+end
+
+When(/^I fill in the log in form with the wrong password$/) do
+  with_scope('#log-in') do
+    fill_in('email',  :with => correct_email)
+    fill_in('password', :with => 'wrong password')
+    click_button 'Log in'
+  end
+end
+
+Then(/^I should see an invalid login message$/) do
+  with_scope('#errors') do
+    expect(page).to have_content('Please try again:')
+    expect(page).to have_content('The email or password you typed did not work')
   end
 end

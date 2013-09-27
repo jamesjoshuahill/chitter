@@ -54,7 +54,7 @@ class Chitter < Sinatra::Base
       session[:user_id] = user.id
       redirect to '/'
     else
-      flash[:errors] = ["The email or password you typed didn't work"]
+      flash[:errors] = ["The email or password you typed did not work"]
       haml :'sessions/new'
     end
   end
