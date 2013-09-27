@@ -1,0 +1,9 @@
+Please log in
+%form#log-in{ action: '/sessions/new', method: 'post' }
+  Email:
+  %input{ name: 'email', type: 'text' }
+  %br
+  Password:
+  %input{ name: 'password', type: 'password' }
+  %br
+  %input{ type: 'submit', value: 'Log in' }

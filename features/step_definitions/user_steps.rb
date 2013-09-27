@@ -14,6 +14,14 @@ When(/^I fill in the sign up form with correct details$/) do
   end
 end
 
+When(/^I fill in the log in form with correct details$/) do
+  with_scope('#log-in') do
+    fill_in('email',  :with => correct_email)
+    fill_in('password', :with => correct_password)
+    click_button 'Log in'
+  end
+end
+
 Then(/^I should be logged in$/) do
   current_path = URI.parse(current_url).path
   expect(current_path).to eq path_to('the home page')
