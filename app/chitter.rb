@@ -4,6 +4,7 @@ require 'haml'
 require 'rack-flash'
 
 require_relative 'models/user'
+require_relative 'helpers/application'
 
 env = ENV["RACK_ENV"] || "development"
 
@@ -13,7 +14,10 @@ DataMapper.auto_upgrade!
 
 class Chitter < Sinatra::Base
   set :sessions, true
+  set :session_secret, 'Even though the sound of it is something quite atrocious'
   use Rack::Flash
+
+  helpers Sinatra::ApplicationHelpers
   
   get '/' do
     haml :index
@@ -31,7 +35,7 @@ class Chitter < Sinatra::Base
                 password_confirmation: params[:password_confirmation],
                 username: params[:username])
     if @user.save
-      flash[:notice] = "Hi #{params[:name]}, happy cheeping!"
+      session[:user_id] = @user.id
       redirect to '/'
     else
       flash.now[:errors] = @user.errors.full_messages

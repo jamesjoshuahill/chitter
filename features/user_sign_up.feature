@@ -12,8 +12,7 @@ Feature: User signs up
   Scenario: with correct details
     Given I am on the sign up page
     When I fill in the sign up form with correct details
-    Then I should be on the homepage
-    And I should see my welcome message
+    Then I should be logged in
     And there should be 1 user
 
   Scenario: with passwords that don't match

@@ -14,8 +14,13 @@ When(/^I fill in the sign up form with correct details$/) do
   end
 end
 
-Then(/^I should see my welcome message$/) do
-  expect(page).to have_content "Hi Jess, happy cheeping!"
+Then(/^I should be logged in$/) do
+  current_path = URI.parse(current_url).path
+  expect(current_path).to eq path_to('the home page')
+  with_scope('header') do
+    expect(page).to have_content "Hi Jess, happy cheeping!"
+    expect(page).not_to have_content "Sign up"
+  end
 end
 
 Then /^there should be ([0-9]+) users?$/ do |count|

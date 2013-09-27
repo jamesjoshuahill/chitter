@@ -8,8 +8,11 @@
     %header
       #logo
         Chitter
-      #user-links
-        %a.button{ href: '/users/new' } Sign up
+      - if current_user  
+        #welcome-message= "Hi #{@current_user.name}, happy cheeping!"
+      - else
+        #user-links
+          %a.button{ href: '/users/new' } Sign up
     - if flash[:notice]
       #flash
         = flash[:notice]
