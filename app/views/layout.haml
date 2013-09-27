@@ -3,6 +3,13 @@
   %head
     %title Chitter
   %body
-    #flash
-      = flash[:notice]
+    - if flash[:notice]
+      #flash
+        = flash[:notice]
+    - if flash[:errors] and not flash[:errors].empty?
+      #errors
+        Please try again:
+        %ul
+          - flash[:errors].each do |error|
+            %li= error
     = yield

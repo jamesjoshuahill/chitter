@@ -11,7 +11,20 @@ Feature: User signs up
 
   Scenario: with correct details
     Given I am on the sign up page
-    When I fill in the sign up form with my details
+    When I fill in the sign up form with correct details
     Then I should be on the homepage
     And I should see my welcome message
-    And I should have 1 user
+    And there should be 1 user
+
+  Scenario: with passwords that don't match
+    Given I am on the sign up page
+    When I fill in the sign up form with passwords that don't match
+    Then I should be on the sign up page
+    And I should see a passwords don't match message
+
+  Scenario: with details that have already been registered
+    Given I have signed up
+    And I am on the sign up page
+    When I fill in the sign up form with correct details
+    Then I should be on the sign up page
+    And I should see an invalid sign up message

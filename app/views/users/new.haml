@@ -1,5 +1,5 @@
 %h3 Please sign up
-%form#sign-up{ action: '/users', method: 'post' }
+%form#sign-up{ action: '/users/new', method: 'post' }
   Name:
   %input{ name: 'name', type: 'text' }
   %br
@@ -8,6 +8,9 @@
   %br
   Password:
   %input{ name: 'password', type: 'password' }
+  %br
+  Password (once more with feeling):
+  %input{ name: 'password_confirmation', type: 'password' }
   %br
   Username:
   %input{ name: 'username', type: 'text' }
