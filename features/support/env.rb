@@ -7,6 +7,10 @@ require File.join(File.dirname(__FILE__), '..', '..', 'app/chitter.rb')
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
+require 'database_cleaner'
+require 'database_cleaner/cucumber'
+
+DatabaseCleaner.strategy = :truncation
 
 Capybara.app = Chitter
 
