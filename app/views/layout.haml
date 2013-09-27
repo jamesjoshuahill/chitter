@@ -2,7 +2,14 @@
 %html
   %head
     %title Chitter
+    %link{ href: '/stylesheets/reset.css', rel: 'stylesheet', type: 'text/css' }
+    %link{ href: '/stylesheets/chitter.css', rel: 'stylesheet', type: 'text/css' }
   %body
+    %header
+      #logo
+        Chitter
+      #user-links
+        %a.button{ href: '/users/new' } Sign up
     - if flash[:notice]
       #flash
         = flash[:notice]
