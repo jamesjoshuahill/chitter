@@ -16,6 +16,7 @@ class Chitter < Sinatra::Base
   set :sessions, true
   set :session_secret, 'Even though the sound of it is something quite atrocious'
   use Rack::Flash
+  use Rack::MethodOverride
 
   helpers Sinatra::ApplicationHelpers
   
@@ -57,6 +58,11 @@ class Chitter < Sinatra::Base
       flash[:errors] = ["The email or password you typed did not work"]
       haml :'sessions/new'
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    redirect to '/'
   end
 
   # start the server if ruby file executed directly

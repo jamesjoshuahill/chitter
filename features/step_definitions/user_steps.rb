@@ -83,3 +83,28 @@ Then(/^I should see an invalid login message$/) do
     expect(page).to have_content('The email or password you typed did not work')
   end
 end
+
+Given(/^I am logged in$/) do
+  User.create(name: correct_name,
+            email: correct_email,
+            password: correct_password,
+            password_confirmation: correct_password,
+            username: correct_username)
+  visit path_to('the log in page')
+  with_scope('#log-in') do
+    fill_in('email',  :with => correct_email)
+    fill_in('password', :with => correct_password)
+    click_button 'Log in'
+  end
+end
+
+Then(/^I should be logged out$/) do
+  current_path = URI.parse(current_url).path
+  expect(current_path).to eq path_to('the home page')
+  with_scope('header') do
+    expect(page).to have_content "Sign up"
+    expect(page).to have_content "Log in"
+    expect(page).not_to have_content "Hi Jess, happy cheeping!"
+    expect(page).not_to have_content "Log out"
+  end
+end
