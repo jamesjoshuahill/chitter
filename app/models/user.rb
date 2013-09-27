@@ -3,7 +3,7 @@ require 'bcrypt'
 class User
   include DataMapper::Resource
 
-  has n, :cheeps, :through => Resource
+  has n, :cheeps
 
   attr_reader :password
   attr_accessor :password_confirmation

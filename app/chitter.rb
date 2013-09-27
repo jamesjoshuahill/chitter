@@ -22,7 +22,7 @@ class Chitter < Sinatra::Base
   helpers Sinatra::ApplicationHelpers
   
   get '/' do
-    @cheeps = Cheep.all
+    @cheeps = Cheep.all(:order => [ :id.desc ])
     haml :index
   end
 

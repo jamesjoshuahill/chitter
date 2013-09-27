@@ -13,3 +13,23 @@ Then(/^I should see my cheep\-tastic cheep$/) do
     expect(page).to have_content(cheep_tastic_message)
   end
 end
+
+correct_name = 'Jess'
+correct_email = 'jess@puppy.com'
+correct_password = 'woof'
+correct_username = 'jess'
+
+Given(/^there are a few cheeps$/) do
+  user = User.create(name: correct_name,
+            email: correct_email,
+            password: correct_password,
+            password_confirmation: correct_password,
+            username: correct_username)
+  Cheep.create(message: "#{cheep_tastic_message} - first", user: user)
+  Cheep.create(message: "#{cheep_tastic_message} - second", user: user)
+  Cheep.create(message: "#{cheep_tastic_message} - third", user: user)
+end
+
+Then(/^I should see the few cheeps in chronological order$/) do
+  expect(page.body).to match(/(third)(.*)(second)(.*)(first)/m) 
+end
