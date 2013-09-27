@@ -4,6 +4,7 @@ require 'haml'
 require 'rack-flash'
 
 require_relative 'models/user'
+require_relative 'models/cheep'
 require_relative 'helpers/application'
 
 env = ENV["RACK_ENV"] || "development"
@@ -21,6 +22,7 @@ class Chitter < Sinatra::Base
   helpers Sinatra::ApplicationHelpers
   
   get '/' do
+    @cheeps = Cheep.all
     haml :index
   end
 
@@ -62,6 +64,16 @@ class Chitter < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
+    redirect to '/'
+  end
+
+  get '/cheeps/new' do
+    haml :'cheeps/new'
+  end
+
+  post '/cheep' do
+    user = User.first(:id => session[:user_id])
+    Cheep.create(message: params[:message], user: user)
     redirect to '/'
   end
 

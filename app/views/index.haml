@@ -1,0 +1,7 @@
+#cheeps
+  %h3 Latest cheeps
+  %ul  
+    - @cheeps.each do |cheep|
+      %li.cheep
+        %span.name= cheep.user.name
+        %span.cheep= cheep.message

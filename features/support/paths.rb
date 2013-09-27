@@ -25,6 +25,9 @@ module NavigationHelpers
     when /the log in page/
       '/sessions/new'
 
+    when /the new cheep page/
+      '/cheeps/new'
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"
