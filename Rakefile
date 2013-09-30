@@ -1,11 +1,8 @@
-require 'dotenv/tasks'
 require 'data_mapper'
 
-task :database_env => :dotenv do
-  env = ENV["RACK_ENV"] || "development"
-  DataMapper.setup(:default, ENV["DATABASE_URL_#{env.upcase}"])
-end
+env = ENV["RACK_ENV"] || "development"
 
+DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 DataMapper.finalize
 DataMapper.auto_upgrade!
 

@@ -1,8 +1,5 @@
 require 'rubygems'
-require 'dotenv'
 require 'sass/plugin/rack'
-
-Dotenv.load
 
 require File.join(File.dirname(__FILE__), 'app/chitter.rb')
 

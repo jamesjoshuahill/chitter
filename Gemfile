@@ -21,5 +21,4 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
-  gem 'dotenv'
 end
