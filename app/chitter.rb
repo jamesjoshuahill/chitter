@@ -9,7 +9,13 @@ require_relative 'helpers/application'
 
 env = ENV["RACK_ENV"] || "development"
 
-DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
+if ENV["RACK_ENV"] == "production"
+  database = "DATABASE_URL"
+else
+  database = "DATABASE_URL_#{env.upcase}"
+end
+
+DataMapper.setup(:default, ENV[database])
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
