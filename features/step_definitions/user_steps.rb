@@ -45,6 +45,15 @@ Then(/^I should see a passwords don't match message$/) do
   end
 end
 
+Then(/^I should see an incomplete details message$/) do
+  with_scope('#errors') do
+    expect(page).to have_content('Please try again:')
+    expect(page).to have_content('Please provide your name')
+    expect(page).to have_content('Please provide your email address')
+    expect(page).to have_content('Please choose a username')
+  end
+end
+
 Given(/^I have signed up$/) do
   User.create(name: correct_name,
               email: correct_email,

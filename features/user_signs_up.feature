@@ -21,6 +21,19 @@ Feature: User signs up
     Then I should be on the sign up page
     And I should see a passwords don't match message
 
+  Scenario: with an email address in the wrong format
+    Given I am on the sign up page
+    When I fill in "email address" for "email"
+    And I press "Sign up"
+    Then I should be on the sign up page
+    And I should see "Please check your email address is typed correctly"
+
+  Scenario: with no details
+    Given I am on the sign up page
+    When I press "Sign up"
+    Then I should be on the sign up page
+    And I should see an incomplete details message
+
   Scenario: with details that have already been registered
     Given I have signed up
     And I am on the sign up page

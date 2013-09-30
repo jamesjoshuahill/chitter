@@ -10,10 +10,10 @@ describe User do
 
   it 'should authenticate login credentials' do
     user = User.create(name: 'Name',
-                       email: 'Email',
+                       email: 'email@email.com',
                        password: 'Password',
                        password_confirmation: 'Password',
                        username: 'username')
-    expect(User.authenticate('Email', 'Password')).to eq user
+    expect(User.authenticate('email@email.com', 'Password')).to eq user
   end
 end
