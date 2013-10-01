@@ -6,6 +6,22 @@ $lightestblue: aliceblue
 $orange: #fecc2f
 $button-width: 7em
 
+// Sticky Footer by Ryan Fait, http://ryanfait.com
+
+html, body
+  height: 100%
+
+#wrapper
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -110px
+
+footer, #push
+  height: 110px
+
+// end
+
 body
   font-family: $font-family
   font-size: $font-size
@@ -59,11 +75,11 @@ header #user-links, #log-out
 .button:hover
   background-color: $yellow
 
-#wrapper .button
+#container .button
   color: black
   border-color: $blue
 
-#wrapper .button:hover
+#container .button:hover
   background-color: $blue
 
 #notice, #errors
@@ -78,13 +94,13 @@ header #user-links, #log-out
 #flash li
   line-height: 1.2em
 
-#wrapper
+#container
   background-color: white
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
   margin: 2em
   padding: 1em 1em 0.5em
 
-#wrapper input
+#container input
   display: block
   width: 15em
   margin-top: 0.5em
@@ -92,11 +108,11 @@ header #user-links, #log-out
   font-size: $font-size
   font-family: $font-family
 
-#wrapper input.button
+#container input.button
   width: $button-width + 2em
   padding: 0.5em 0.5em
 
-#wrapper textarea
+#container textarea
   display: block
   margin-top: 0.5em
   width: 25em
@@ -120,3 +136,24 @@ header #user-links, #log-out
 
 #cheeps .cheep .message
   letter-spacing: 0
+
+footer
+  display: flex
+  display: -webkit-flex
+  background-color: white
+
+footer > *
+  margin: auto inherit
+
+footer img
+  margin-left: 1em
+  vertical-align: top
+
+footer #colophon
+  -webkit-flex: 1
+  flex: 1
+  text-align: right
+  font-size: $font-size - 2pt
+
+footer p
+  padding: 0.5em 1em

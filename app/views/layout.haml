@@ -5,7 +5,10 @@
     %link{ href: '/stylesheets/reset.css', rel: 'stylesheet', type: 'text/css' }
     %link{ href: '/stylesheets/chitter.css', rel: 'stylesheet', type: 'text/css' }
   %body
-    = partial :header
-    = partial :flash
     #wrapper
-      = yield
+      = partial :header
+      = partial :flash
+      #container
+        = yield
+      #push
+    = partial :footer
