@@ -21,14 +21,15 @@
         #user-links
           %a.button{ href: '/users/new' } Sign up
           %a.button{ href: '/sessions/new' } Log in
-    - if flash[:notice]
-      #flash
-        = flash[:notice]
-    - if flash[:errors] and not flash[:errors].empty?
-      #errors
-        Please try again:
-        %ul
-          - flash[:errors].each do |error|
-            %li= error
+    #user-messages
+      - if flash[:notice]
+        #notice
+          = flash[:notice]
+      - if flash[:errors] and not flash[:errors].empty?
+        #errors
+          Please try again:
+          %ul
+            - flash[:errors].each do |error|
+              %li= error
     #wrapper
       = yield

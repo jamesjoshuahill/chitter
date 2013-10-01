@@ -72,6 +72,7 @@ class Chitter < Sinatra::Base
     cheep = Cheep.create(message: params[:message],
                          user: user)
     if cheep.save
+      flash[:notice] = "You cheeped!"
       redirect to '/'
     else
       flash.now[:errors] = cheep.errors.full_messages

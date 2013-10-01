@@ -8,6 +8,9 @@ When(/^I fill out the new cheep form with a cheep\-tastic message$/) do
 end
 
 Then(/^I should see my cheep\-tastic cheep$/) do
+  with_scope('#notice') do
+    expect(page).to have_content('You cheeped!')
+  end
   with_scope('#cheeps') do
     expect(page).to have_content('Jess')
     expect(page).to have_content(cheep_tastic_message)
