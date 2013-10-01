@@ -1,9 +1,5 @@
 %h3 Please log in
 %form#log-in{ action: '/sessions/new', method: 'post' }
-  Email:
-  %input{ name: 'email', type: 'text' }
-  %br
-  Password:
-  %input{ name: 'password', type: 'password' }
-  %br
-  %input{ type: 'submit', value: 'Log in' }
+  %input{ name: 'email', type: 'text', placeholder: 'Email' }
+  %input{ name: 'password', type: 'password', placeholder: 'Password' }
+  %input.button{ type: 'submit', value: 'Log in' }

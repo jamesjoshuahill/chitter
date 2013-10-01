@@ -1,4 +1,4 @@
 %h3 Add a cheep!
 %form#new-cheep{ action: '/cheeps/new', method: 'post' }
-  %input{ name: 'message', type: 'text' }
-  %input{ type: 'submit', value: 'Add cheep!' }
+  %textarea{ name: 'message', type: 'text' }
+  %input.button{ type: 'submit', value: 'Add cheep!' }
