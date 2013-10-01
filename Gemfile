@@ -9,6 +9,7 @@ gem 'bcrypt-ruby'
 gem 'haml'
 gem 'sass'
 gem 'rack-flash3'
+gem 'sinatra-partial'
 
 group :development, :test do
   gem 'database_cleaner'

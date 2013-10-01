@@ -1,0 +1,16 @@
+%header
+  #mascot
+    %img{ src: '/images/chitter_chick_40x40.png', width: '40px', height: '40px', title: 'Chitter Chick' }
+  #logo
+    Chitter
+  - if current_user  
+    #welcome-message= "Hi #{@current_user.name}, happy cheeping!"
+    #cheep-links
+      %a.button{ href: '/cheeps/new' } Cheep!
+    %form#log-out{ action: '/sessions', method: 'post' }
+      %input{ type: 'hidden', name: '_method', value: 'delete' }
+      %input.button{ type: 'submit', value: 'Log out' }
+  - else
+    #user-links
+      %a.button{ href: '/users/new' } Sign up
+      %a.button{ href: '/sessions/new' } Log in

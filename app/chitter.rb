@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'haml'
 require 'rack-flash'
+require 'sinatra/partial'
 
 require_relative 'models/user'
 require_relative 'models/cheep'
@@ -14,6 +15,7 @@ class Chitter < Sinatra::Base
   set :session_secret, 'Even though the sound of it is something quite atrocious'
   use Rack::Flash
   use Rack::MethodOverride
+  register Sinatra::Partial
 
   helpers Sinatra::ApplicationHelpers
   
