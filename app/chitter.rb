@@ -67,10 +67,16 @@ class Chitter < Sinatra::Base
     haml :'cheeps/new'
   end
 
-  post '/cheep' do
+  post '/cheeps/new' do
     user = User.first(:id => session[:user_id])
-    Cheep.create(message: params[:message], user: user)
-    redirect to '/'
+    cheep = Cheep.create(message: params[:message],
+                         user: user)
+    if cheep.save
+      redirect to '/'
+    else
+      flash.now[:errors] = cheep.errors.full_messages
+      haml :'cheeps/new'
+    end
   end
 
   # start the server if ruby file executed directly

@@ -19,3 +19,10 @@ Feature: Post a cheep
     When I fill out the new cheep form with a cheep-tastic message
     Then I should be on the homepage
     And I should see my cheep-tastic cheep
+
+  Scenario: with no message
+    Given I am logged in
+    And I am on the new cheep page
+    When I press "Add cheep!"
+    Then I should be on the new cheep page
+    And I should see "Please cheep something"

@@ -4,5 +4,5 @@ class Cheep
   belongs_to :user
 
   property :id, Serial
-  property :message, Text
+  property :message, Text, :required => true, :message => "Please cheep something"
 end
