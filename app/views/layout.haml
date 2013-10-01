@@ -30,4 +30,5 @@
         %ul
           - flash[:errors].each do |error|
             %li= error
-    = yield
+    #wrapper
+      = yield
