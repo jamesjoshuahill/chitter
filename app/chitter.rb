@@ -9,6 +9,7 @@ require_relative 'helpers/application'
 require_relative 'data_mapper_setup'
 
 class Chitter < Sinatra::Base
+  set :public_folder, '../public'
   set :sessions, true
   set :session_secret, 'Even though the sound of it is something quite atrocious'
   use Rack::Flash
