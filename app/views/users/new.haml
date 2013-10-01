@@ -1,18 +1,8 @@
 %h3 Please sign up
 %form#sign-up{ action: '/users/new', method: 'post' }
-  Name:
-  %input{ name: 'name', type: 'text' }
-  %br
-  Email:
-  %input{ name: 'email', type: 'text' }
-  %br
-  Password:
-  %input{ name: 'password', type: 'password' }
-  %br
-  Confirm password:
-  %input{ name: 'password_confirmation', type: 'password' }
-  %br
-  Username:
-  %input{ name: 'username', type: 'text' }
-  %br
-  %input{ type: 'submit', value: 'Sign up' }
+  %input{ name: 'name', type: 'text', placeholder: 'Name' }
+  %input{ name: 'email', type: 'text', placeholder: 'Email' }
+  %input{ name: 'password', type: 'password', placeholder: 'Password' }
+  %input{ name: 'password_confirmation', type: 'password', placeholder: 'Password confirmation' }
+  %input{ name: 'username', type: 'text', placeholder: 'Username' }
+  %input.button{ type: 'submit', value: 'Sign up' }
