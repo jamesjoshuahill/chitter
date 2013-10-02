@@ -4,7 +4,7 @@ get '/users/new' do
 end
 
 post '/users/new' do
-  if !session[:user_id].nil?
+  if session[:user_id]
     flash[:notice] = "You are already logged in"
     redirect to '/'
   else
