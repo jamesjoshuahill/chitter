@@ -125,18 +125,30 @@ header #user-links, #log-out
 
 #cheeps .cheep
   display: none
+  position: relative
   list-style: none
   padding: 0.5em 1em
   margin: 0 0 0.5em
   background-color: $lightestblue
 
-#cheeps .cheep .name
-  letter-spacing: 0.1em
-  width: 10em
-  display: inline-block
+  .name
+    letter-spacing: 0.1em
+    width: 10em
+    display: inline-block
 
-#cheeps .cheep .message
-  letter-spacing: 0
+  .message
+    letter-spacing: 0
+
+  .star
+    position: absolute
+    top: 0.2em
+    right: 0.2em
+    font-size: 1.4em
+    color: $yellow
+    cursor: pointer
+
+  .star.solid
+    opacity: 0
 
 footer
   display: flex
