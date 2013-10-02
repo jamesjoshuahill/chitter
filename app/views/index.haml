@@ -2,4 +2,4 @@
   %h3 Latest cheeps
   %ul  
     - @cheeps.each do |cheep|
-      = partial :cheep
+      = partial :cheep, :locals => { :cheep => cheep }
