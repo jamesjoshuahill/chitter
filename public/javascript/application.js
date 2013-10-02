@@ -4,15 +4,16 @@ function hideNotice() {
 
 function showLinkFavouritedNotice(cheep) {
   var favourited = !!$(cheep).data("favourited");
+  var name = $(cheep).find('.name').text();
   var message = $(cheep).find('.message').text();
   var log_output = favourited ?
-                message + " was added to favourites" :
-                message + " was removed from favourites";
+                "You love " + name + "'s cheep: " + message :
+                "You fall out of love with " + name + "'s cheep: " + message;
   console.log(log_output);
 }
 
 function addFavouritesHandler() {
-  $(".star.solid").click(function() {
+  $(".heart.solid").click(function() {
     var cheep = $(this).parent();
     var favourited = !!$(cheep).data("favourited");
 
