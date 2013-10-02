@@ -4,7 +4,12 @@ function hideNotice() {
 
 function addFavouritesHandler() {
   $(".star.solid").click(function() {
-    $(this).animate({opacity: 1}, 500);
+    var cheep = $(this).parent();
+    var favourited = !!$(cheep).data("favourited");
+
+    var newOpacity = favourited ? 0 : 1;
+    $(cheep).data("favourited", !favourited);
+    $(this).animate({opacity: newOpacity}, 1000);
   });
 }
 
