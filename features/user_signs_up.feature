@@ -40,3 +40,10 @@ Feature: User signs up
     When I fill in the sign up form with correct details
     Then I should be on the sign up page
     And I should see an invalid sign up message
+
+  Scenario: when already logged in
+    Given I am logged in
+    And I am on the sign up page
+    When I fill in the sign up form with correct details
+    Then I should be on the homepage
+    And I should see an already logged in message

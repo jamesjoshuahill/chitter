@@ -30,17 +30,22 @@ class Chitter < Sinatra::Base
   end
 
   post '/users/new' do
-    @user = User.create(name: params[:name],
-                email: params[:email],
-                password: params[:password],
-                password_confirmation: params[:password_confirmation],
-                username: params[:username])
-    if @user.save
-      session[:user_id] = @user.id
+    if !session[:user_id].nil?
+      flash[:notice] = "You are already logged in"
       redirect to '/'
     else
-      flash.now[:errors] = @user.errors.full_messages
-      haml :'users/new'
+      @user = User.create(name: params[:name],
+                  email: params[:email],
+                  password: params[:password],
+                  password_confirmation: params[:password_confirmation],
+                  username: params[:username])
+      if @user.save
+        session[:user_id] = @user.id
+        redirect to '/'
+      else
+        flash.now[:errors] = @user.errors.full_messages
+        haml :'users/new'
+      end
     end
   end
 
@@ -49,14 +54,19 @@ class Chitter < Sinatra::Base
   end
 
   post '/sessions/new' do
-    email, password = params[:email], params[:password]
-    user = User.authenticate(email, password)
-    if user
-      session[:user_id] = user.id
+    if !session[:user_id].nil?
+      flash[:notice] = "You are already logged in"
       redirect to '/'
     else
-      flash.now[:errors] = ["The email or password you typed did not work"]
-      haml :'sessions/new'
+      email, password = params[:email], params[:password]
+      user = User.authenticate(email, password)
+      if user
+        session[:user_id] = user.id
+        redirect to '/'
+      else
+        flash.now[:errors] = ["The email or password you typed did not work"]
+        haml :'sessions/new'
+      end
     end
   end
 

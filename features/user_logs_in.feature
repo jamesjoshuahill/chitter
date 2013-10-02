@@ -27,3 +27,10 @@ Feature: User logs in
     When I fill in the log in form with correct details
     Then I should be on the log in page
     And I should see an invalid login message
+
+  Scenario: when already logged in
+    Given I am logged in
+    And I am on the log in page
+    When I fill in the log in form with correct details
+    Then I should be on the homepage
+    And I should see an already logged in message
