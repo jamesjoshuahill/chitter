@@ -12,7 +12,7 @@ require 'database_cleaner/cucumber'
 
 DatabaseCleaner.strategy = :truncation
 
-Capybara.app = Chitter
+Capybara.app = Sinatra::Application
 
 class ChitterWorld
   include Capybara::DSL
