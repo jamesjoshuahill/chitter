@@ -1,15 +1,17 @@
 function hideNotice() {
-  $('#notice').delay(2500).slideUp(500);
+  $('.notice').delay(2500).slideUp(500);
 }
 
 function showLinkFavouritedNotice(cheep) {
   var favourited = !!$(cheep).data("favourited");
   var name = $(cheep).find('.name').text();
   var message = $(cheep).find('.message').text();
-  var log_output = favourited ?
+  var notice = favourited ?
                 "You love " + name + "'s cheep: " + message :
                 "You fall out of love with " + name + "'s cheep: " + message;
-  console.log(log_output);
+  var flash = $("<div></div>").addClass('notice').html(notice);
+  $(flash)
+  $(flash).appendTo('#flash').hide().slideDown(500).delay(2500).slideUp(500);
 }
 
 function addFavouritesHandler() {
