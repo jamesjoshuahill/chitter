@@ -119,7 +119,7 @@ Then(/^I should be logged out$/) do
 end
 
 Then(/^I should see an already logged in message$/) do
-  with_scope('#notice') do
+  with_scope('.notice') do
     expect(page).to have_content "You are already logged in"
   end
 end
