@@ -20,6 +20,14 @@ class ChitterWorld
   include RSpec::Matchers
 end
 
+Before do
+  DatabaseCleaner.start
+end
+
 World do
   ChitterWorld.new
+end
+
+After do |scenario|
+  DatabaseCleaner.clean
 end

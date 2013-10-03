@@ -5,11 +5,11 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+ENV['RACK_ENV'] = 'test'
+
 require 'database_cleaner'
 require 'capybara/rspec'
 require './app/chitter'
-
-ENV['RACK_ENV'] = 'test'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
