@@ -30,7 +30,7 @@ function addFavouritesHandler() {
 function prepareAddCheepHandler() {
   $('.add-cheep-link').click(function(event) {
     $.get($(this).attr("href"), function(data) {
-      $("#container").prepend(data);
+      $("#container").prepend(data + "<br>");
     });
     event.preventDefault();
   });
