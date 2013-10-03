@@ -2,7 +2,8 @@
   #mascot
     %img{ src: '/images/chitter_chick_40x40.png', width: '40px', height: '40px', title: 'Chitter Chick' }
   #logo
-    Chitter
+    %a{ href: '/' }
+      Chitter
   - if current_user  
     #welcome-message= "Hi #{@current_user.name}, happy cheeping!"
     #cheep-links
