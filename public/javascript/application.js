@@ -27,20 +27,34 @@ function addFavouritesHandler() {
   });
 }
 
-function prepareAjaxFormsHandler() {
+function prepareAjaxGetFormsHandler() {
   $('.add-cheep-link, .sign-up-link, .log-in-link').click(function(event) {
     $.get($(this).attr("href"), function(data) {
       if ($('#ajax-form').length == 0) {
         $('#container').prepend("<div id='ajax-form'></div>");
       }
       $("#ajax-form").html(data);
+      prepareAjaxPostFormsHandler();
     });
     event.preventDefault();
   });
 }
 
+function prepareAjaxPostFormsHandler() {
+  var form = $('#ajax-form form');
+  form.submit(function(event) {    
+    var updateCheeps = function(data) {
+      $('#container').html(data);
+      addFavouritesHandler();
+    }
+    var data = form.serialize();
+    $.post(form.attr('action'), data, updateCheeps);
+    event.preventDefault();
+  });
+}
+
 $(function() {
-  prepareAjaxFormsHandler();
+  prepareAjaxGetFormsHandler();
   hideNotice();
   addFavouritesHandler();
 });
