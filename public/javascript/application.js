@@ -27,8 +27,8 @@ function addFavouritesHandler() {
   });
 }
 
-function prepareAddCheepHandler() {
-  $('.add-cheep-link').click(function(event) {
+function prepareAjaxFormsHandler() {
+  $('.add-cheep-link, .sign-up-link, .log-in-link').click(function(event) {
     $.get($(this).attr("href"), function(data) {
       if ($('#ajax-form').length == 0) {
         $('#container').prepend("<div id='ajax-form'></div>");
@@ -40,7 +40,7 @@ function prepareAddCheepHandler() {
 }
 
 $(function() {
-  prepareAddCheepHandler();
+  prepareAjaxFormsHandler();
   hideNotice();
   addFavouritesHandler();
 });

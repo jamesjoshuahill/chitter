@@ -15,6 +15,13 @@ Feature: User signs up
     Then I should be logged in
     And there should be 1 user
 
+  Scenario: with correct details (using Ajax)
+    Given I am on the homepage
+    When I follow "Sign up"
+    And I fill in the sign up form with correct details
+    Then I should be logged in
+    And there should be 1 user
+
   Scenario: with passwords that don't match
     Given I am on the sign up page
     When I fill in the sign up form with passwords that don't match

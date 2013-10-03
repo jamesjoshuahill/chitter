@@ -1,5 +1,5 @@
 get '/sessions/new' do
-  haml :'sessions/new'
+  haml :'sessions/new', :layout => !request.xhr?
 end
 
 post '/sessions/new' do

@@ -15,6 +15,13 @@ Feature: User logs in
     When I fill in the log in form with correct details
     Then I should be logged in
 
+  Scenario: with correct details (using Ajax)
+    Given I have signed up
+    And I am on the homepage
+    When I follow "Log in"
+    And I fill in the log in form with correct details
+    Then I should be logged in
+
   Scenario: with the wrong password
     Given I have signed up
     And I am on the log in page
