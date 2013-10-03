@@ -1,5 +1,5 @@
 get '/cheeps/new' do
-  haml :'cheeps/new'
+  haml :'cheeps/new', :layout => !request.xhr?
 end
 
 post '/cheeps/new' do

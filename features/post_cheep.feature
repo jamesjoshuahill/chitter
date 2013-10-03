@@ -27,6 +27,14 @@ Feature: Post a cheep
     Then I should be on the homepage
     And I should see my cheep-tastic cheep
 
+  Scenario: with a new cheep-tastic message (using AJAX)
+    Given I am logged in
+    And I am on the homepage
+    When I follow "Cheep!"
+    And I fill out the new cheep form with a cheep-tastic message
+    Then I should be on the homepage
+    And I should see my cheep-tastic cheep
+
   Scenario: with no message
     Given I am logged in
     And I am on the new cheep page
