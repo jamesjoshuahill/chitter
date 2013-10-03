@@ -30,7 +30,10 @@ function addFavouritesHandler() {
 function prepareAddCheepHandler() {
   $('.add-cheep-link').click(function(event) {
     $.get($(this).attr("href"), function(data) {
-      $("#container").prepend(data + "<br>");
+      if ($('#ajax-form').length == 0) {
+        $('#container').prepend("<div id='ajax-form'></div>");
+      }
+      $("#ajax-form").html(data);
     });
     event.preventDefault();
   });
