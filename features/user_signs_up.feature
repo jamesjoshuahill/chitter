@@ -15,6 +15,7 @@ Feature: User signs up
     Then I should be logged in
     And there should be 1 user
 
+  @javascript
   Scenario: with correct details (using Ajax)
     Given I am on the homepage
     When I follow "Sign up"

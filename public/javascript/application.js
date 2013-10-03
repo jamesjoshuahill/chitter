@@ -10,7 +10,6 @@ function showLinkFavouritedNotice(cheep) {
                 "You love " + name + "'s cheep: " + message :
                 "You fall out of love with " + name + "'s cheep: " + message;
   var flash = $("<div></div>").addClass('notice').html(notice);
-  $(flash)
   $(flash).appendTo('#flash').hide().slideDown(500).delay(2500).slideUp(500);
 }
 
@@ -49,6 +48,11 @@ function prepareAjaxPostFormsHandler() {
     }
     var data = form.serialize();
     $.post(form.attr('action'), data, updateCheeps);
+    var notice = $.session.get('notice') || false;
+    if(notice) {
+      var flash = $("<div></div>").addClass('notice').html(notice);
+      $(flash).appendTo('#flash').hide().slideDown(500).delay(2500).slideUp(500);
+    }
     event.preventDefault();
   });
 }

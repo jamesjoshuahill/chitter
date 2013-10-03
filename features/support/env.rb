@@ -9,6 +9,12 @@ require 'capybara/cucumber'
 require 'rspec'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
+require 'capybara/poltergeist'
+
+Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {debug: false})
+end
+Capybara.javascript_driver = :poltergeist
 
 DatabaseCleaner.strategy = :truncation
 

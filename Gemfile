@@ -18,6 +18,7 @@ group :development, :test do
   gem 'cucumber-sinatra'
   gem 'rspec'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'guard'
   gem 'guard-cucumber'
   gem 'guard-rspec'

@@ -15,6 +15,7 @@ Feature: User logs in
     When I fill in the log in form with correct details
     Then I should be logged in
 
+  @javascript
   Scenario: with correct details (using Ajax)
     Given I have signed up
     And I am on the homepage

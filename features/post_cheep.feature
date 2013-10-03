@@ -27,6 +27,7 @@ Feature: Post a cheep
     Then I should be on the homepage
     And I should see my cheep-tastic cheep
 
+  @javascript
   Scenario: with a new cheep-tastic message (using AJAX)
     Given I am logged in
     And I am on the homepage
